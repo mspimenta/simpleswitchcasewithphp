@@ -1,0 +1,29 @@
+<?php
+
+// Solicita a idade da pessoa
+echo "Qual é a sua idade? ";
+$idade = trim(fgets(STDIN));
+
+// Solicita se a pessoa é analfabeta ou não (A para Analfabeto, B para Alfabetizado)
+echo "Você é alfabetizado? (Digite A para Analfabeto, B para Alfabetizado): ";
+$alfabetizado = strtoupper(trim(fgets(STDIN)));
+
+// Verifica se a idade é menor que 16 anos
+if ($idade < 16) {
+    echo "Você ainda não tem idade para votar.\n";
+} else {
+    // Usa switch para determinar se o voto é obrigatório ou facultativo
+    switch (true) {
+        case $idade >= 18 && $idade <= 70 && $alfabetizado == 'B':
+            $voto_obrigatorio = "obrigatório";
+            break;
+        default:
+            $voto_obrigatorio = "facultativo";
+            break;
+    }
+
+    // Exibe se o voto é obrigatório ou facultativo
+    echo "Seu voto é $voto_obrigatorio.\n";
+}
+
+?>
